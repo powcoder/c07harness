@@ -1,0 +1,69 @@
+README for C07 in CS 2505 Spring 2019
+--------------------------------------------------------------------------------
+The tarball you just extracted should contain three files:
+
+   README               this file
+   gradec07.sh          grading script we will use to test your submission
+   c07Files.tar         tar file containing test script/log/gis files:
+		compare           tool to compare your logs to the reference logs
+		gisdata/          directory containing GIS data files used by scripts
+		   NM_1000.txt
+		   NM_100.txt
+		   NM_5000.txt
+		logs/             reference logs produced from the scripts
+		   reflog01.txt
+		   reflog02.txt
+		   reflog03.txt
+		   reflog04.txt
+		scripts/          test scripts
+		   script01.txt
+		   script02.txt
+		   script03.txt
+		   script04.txt
+
+We suggest you do your development work in a different directory than where you
+unpacked this tar file.
+
+--------------------------------------------------------------------------------
+Using the test files in your development work:
+--------------------------------------------------------------------------------
+Once you have a working solution, or a partially-working solution, you can use
+the supplied scripts and GIS files in your own testing.
+
+Pick a script you want to use; we suggest that you start with script01.txt. 
+Copy that script into the directory where you are developing your solution; read
+the script to see what GIS data file it needs, and copy that file to the same
+directory.
+
+Run your solution:  gis scriptxx.txt logxx.txt  (xx is the number of the script)
+
+Compare the results in your solution to the corresponding reference log, 
+reflogxx.txt; you can do this manually, or you can use the compare tool:
+
+	Invocation:  compare <test #> <reference log file> <student log file>
+					 test # is the number of the test case being checked
+					 reference log file is the name of the correct log file
+					 student log file is the name of student's log file
+
+(You can just use 1 for the <test #>.)  The compare tool will write its results
+to a file named comparexx.txt, so you can examine that.
+
+--------------------------------------------------------------------------------
+Using the grading script to verify your final submission:
+--------------------------------------------------------------------------------
+To use the grading script, prepare a tar file containing all the .c and .h
+files needed by your solution AND NOTHING ELSE.  We recommend naming your
+tar file using your PID; e.g., wmcquain.tar.
+
+Execution options for the grading script:
+
+   gradec07.sh <name of your tar file>
+      Unpacks your tar file into ./tempdir
+      Copies .c and .h files to ./build
+      Tries to build an executable in ./build
+      Runs your executable on each script in ./scripts
+      Runs compare to score your log files vs the ones in ./logs
+      Writes a summary of the testing to PID.txt
+      
+   gradec07.sh -clean
+      Deletes all the files created by a previous run of the gradec02.sh
